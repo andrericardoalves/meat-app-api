@@ -12,58 +12,42 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.meatapp.model.User;
-import com.meatapp.service.UserService;
+import com.meatapp.model.Reviews;
+import com.meatapp.service.ReviewsService;
 
 @RestController
-@RequestMapping(value="/users")
-public class UserRest {
+@RequestMapping(value="/reviews")
+public class ReviewsRest {
 
 	@Autowired
-	private UserService service;
+	private ReviewsService service;
 	
 	@RequestMapping(path="/save",method=RequestMethod.POST)
-	public ResponseEntity<Void> save(@RequestBody User user){
-		User obj = service.save(user);
+	public ResponseEntity<Void> save(@RequestBody Reviews reviews){
+		Reviews obj = service.save(reviews);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(path="/findAllUsers",method=RequestMethod.GET)
-	public ResponseEntity<List<User>>  findAllUsers(){
-		List<User> listUsers = service.findAllUsers();
+	@RequestMapping(path="/findReviewsByRestaurantId",method=RequestMethod.GET)
+	public ResponseEntity<List<Reviews>>  findReviewsByRestaurantId(@RequestParam long id){
+		List<Reviews> listUsers = service.findReviewsByRestaurantId(id);
 		return ResponseEntity.ok().body(listUsers);
 	}
-	
-	@RequestMapping(path="/findById", method=RequestMethod.GET)
-	public ResponseEntity<User> findById(@RequestParam long id){
-		User obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
-	}
-	
+		
 	@RequestMapping(path="/delete", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@RequestParam Long id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-    @RequestMapping(path="/findByEmail",  method=RequestMethod.GET)
-	public User findByEmail(@RequestParam String email){
-		return service.findByEmail(email);
-	}
-    
     @RequestMapping(path="/saveAll",method=RequestMethod.POST)
-	public ResponseEntity<Void> saveAll(@RequestBody List<User> users){
-		List<User> objList = service.saveAll(users);
+	public ResponseEntity<Void> saveAll(@RequestBody List<Reviews> reviews){
+		List<Reviews> objList = service.saveAll(reviews);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				  .buildAndExpand(objList).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-    
-    @RequestMapping(path="/login",method=RequestMethod.GET)
-    public ResponseEntity<User> login(@RequestParam String email, @RequestParam String password){
-		User obj = service.login(email,password);
-		return ResponseEntity.ok().body(obj);
-	}
+   
 }

@@ -44,4 +44,8 @@ public class UserService {
 	public List<User> saveAll(List<User> users){
 		return repository.saveAll(users);
 	}
+	
+	public User login(String email, String password){
+		return repository.login(email,password);
+	}
 }
