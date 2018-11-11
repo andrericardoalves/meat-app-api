@@ -1,0 +1,10 @@
+-- Iniciar o Git
+git init
+ -- Configurar usuário
+ git config --global user.name "André Ricardo Alves"
+ git config --global user.email "andrecajuru@gmail.com"
+ --
+ git status
+ 
+ -- Mudar o status de untracked para stage 
+ git add .
