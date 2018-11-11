@@ -1,10 +1,20 @@
 -- Iniciar o Git
 git init
- -- Configurar usuário
- git config --global user.name "André Ricardo Alves"
- git config --global user.email "andrecajuru@gmail.com"
+-- Configurar usuário
+git config --global user.name "André Ricardo Alves"
+git config --global user.email "andrecajuru@gmail.com"
  --
- git status
+git status
  
  -- Mudar o status de untracked para stage 
- git add .
+git add .
+git status
+-- Comit
+git commit -m "Primeira versao meat-app-api"
+-- Historico
+- git log
+
+-- Criar o projeto no github
+-- Associar o projeto local com o github
+git remote add origin https://github.com/andrericardoalves/meat-app-api.git
+git push -u origin master  
