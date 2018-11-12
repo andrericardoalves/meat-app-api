@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.meatapp.model.Menu;
+import com.meatapp.model.MenuItem;
 import com.meatapp.repository.MenuRepository;
 
 @Service
@@ -15,17 +15,17 @@ public class MenuService {
 	@Autowired
 	private MenuRepository service;
 	
-	public Menu save(Menu menu){
+	public MenuItem save(MenuItem menu){
 		return service.save(menu);
 	}
 	
-	public List<Menu> findAll(){
+	public List<MenuItem> findAll(){
 		return service.findAll();
 	}
 	
-	public Menu findById(Long id){
+	public MenuItem findById(Long id){
 	
-	Optional<Menu> menu = service.findById(id);
+	Optional<MenuItem> menu = service.findById(id);
 	 
 	if(menu.isPresent()){
 		 return menu.get();
@@ -38,12 +38,16 @@ public class MenuService {
 		service.deleteById(id);
 	}
 	
-	public List<Menu> findByName(String name){
+	public List<MenuItem> findByName(String name){
 		return service.findByName(name);
 	}
 	
-	public List<Menu> saveAll(List<Menu> menus){
+	public List<MenuItem> saveAll(List<MenuItem> menus){
 		 return service.saveAll(menus);
+	}
+	
+	public List<MenuItem> findMenusById(Long id){
+		 return service.findMenusById(id);
 	}
 	
 }

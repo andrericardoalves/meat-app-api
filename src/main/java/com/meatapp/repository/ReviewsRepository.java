@@ -11,6 +11,6 @@ import com.meatapp.model.Reviews;
 public interface ReviewsRepository extends JpaRepository<Reviews, Long>{
 
 	@Query("SELECT r from Reviews r where r.restaurantId = :restaurantId")
-	public List<Reviews> findReviewsByRestaurantId(@Param("restaurantId") Long restaurantId);
+	public List<Reviews> reviewsOfRestaurant(@Param("restaurantId") Long restaurantId);
 	
 }

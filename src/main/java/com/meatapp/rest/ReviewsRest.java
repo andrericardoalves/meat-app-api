@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,9 +31,9 @@ public class ReviewsRest {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(path="/findReviewsByRestaurantId",method=RequestMethod.GET)
-	public ResponseEntity<List<Reviews>>  findReviewsByRestaurantId(@RequestParam long id){
-		List<Reviews> listUsers = service.findReviewsByRestaurantId(id);
+	@RequestMapping(path="/reviewsOfRestaurant/{id}",method=RequestMethod.GET)
+	public ResponseEntity<List<Reviews>>  reviewsOfRestaurant(@PathVariable(value="id")long id){
+		List<Reviews> listUsers = service.reviewsOfRestaurant(id);
 		return ResponseEntity.ok().body(listUsers);
 	}
 		

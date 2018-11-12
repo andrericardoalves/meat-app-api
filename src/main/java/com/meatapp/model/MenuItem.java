@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-public class Menu implements Serializable{
+public class MenuItem implements Serializable{
 
 	/**
 	 * 

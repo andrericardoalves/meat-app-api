@@ -36,5 +36,5 @@ public class Restaurant implements Serializable{
 	private String  hours;
 	
 	@OneToMany()
-	private List<Menu> menus;
+	private List<MenuItem> menus;
 }

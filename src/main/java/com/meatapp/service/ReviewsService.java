@@ -26,7 +26,7 @@ public class ReviewsService {
 		 return repository.saveAll(reviews);
 	}
 	
-	public List<Reviews> findReviewsByRestaurantId(Long id){
-		 return	repository.findReviewsByRestaurantId(id);
+	public List<Reviews> reviewsOfRestaurant(Long id){
+		 return	repository.reviewsOfRestaurant(id);
 	}
 }
