@@ -13,19 +13,19 @@ import com.meatapp.repository.MenuRepository;
 public class MenuService {
 
 	@Autowired
-	private MenuRepository service;
+	private MenuRepository repository;
 	
 	public MenuItem save(MenuItem menu){
-		return service.save(menu);
+		return repository.save(menu);
 	}
 	
 	public List<MenuItem> findAll(){
-		return service.findAll();
+		return repository.findAll();
 	}
 	
 	public MenuItem findById(Long id){
 	
-	Optional<MenuItem> menu = service.findById(id);
+	Optional<MenuItem> menu = repository.findById(id);
 	 
 	if(menu.isPresent()){
 		 return menu.get();
@@ -35,19 +35,19 @@ public class MenuService {
 	}
 	
 	public void delete(Long id){
-		service.deleteById(id);
+		repository.deleteById(id);
 	}
 	
 	public List<MenuItem> findByName(String name){
-		return service.findByName(name);
+		return repository.findByName(name);
 	}
 	
 	public List<MenuItem> saveAll(List<MenuItem> menus){
-		 return service.saveAll(menus);
+		 return repository.saveAll(menus);
 	}
 	
 	public List<MenuItem> findMenusById(Long id){
-		 return service.findMenusById(id);
+		 return repository.findMenusById(id);
 	}
 	
 }

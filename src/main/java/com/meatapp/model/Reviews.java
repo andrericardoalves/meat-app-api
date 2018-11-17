@@ -27,7 +27,7 @@ public class Reviews implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long idReview;
     private Date date;
     private Double rating;
     private String comments;

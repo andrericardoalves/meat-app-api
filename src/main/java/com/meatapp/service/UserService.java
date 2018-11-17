@@ -16,7 +16,7 @@ public class UserService {
 	private UserRepository repository;
 	
 	public User save(User user){
-		return repository.save(user);
+		return repository.save(user); 
 	}
 	
 	public List<User> findAllUsers(){
@@ -45,7 +45,7 @@ public class UserService {
 		return repository.saveAll(users);
 	}
 	
-	public User login(String email, String password){
-		return repository.login(email,password);
+	public User login(User user){
+		return repository.login(user.getEmail(),user.getPassword());
 	}
 }

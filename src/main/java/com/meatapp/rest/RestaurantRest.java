@@ -27,7 +27,7 @@ public class RestaurantRest {
 	public ResponseEntity<Void> save(@RequestBody Restaurant restaurant){
 		Restaurant obj = service.save(restaurant);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+				.path("/{id}").buildAndExpand(obj.getIdRestaurant()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	

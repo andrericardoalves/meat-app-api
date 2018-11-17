@@ -27,7 +27,7 @@ public class ReviewsRest {
 	public ResponseEntity<Void> save(@RequestBody Reviews reviews){
 		Reviews obj = service.save(reviews);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+				.path("/{id}").buildAndExpand(obj.getIdReview()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	

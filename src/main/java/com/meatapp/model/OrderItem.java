@@ -7,8 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,8 +17,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-public class MenuItem implements Serializable{
-
+public class OrderItem implements Serializable {
+	
 	/**
 	 * 
 	 */
@@ -27,14 +26,12 @@ public class MenuItem implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idMenuItem;
-    private String imagePath;
-    private String name;
-    private String description;
-    private String price;
-    
-    
-    @ManyToOne()
-    @JoinColumn(name="idRestaurant")
-    private Restaurant idRestaurant;
+	private Long idOrderItem;
+	private Long quantity; 
+	public Long menuId;
+	
+	@OneToOne
+	@JoinColumn(name= "orders_id")
+	private Orders orders;
+	
 }

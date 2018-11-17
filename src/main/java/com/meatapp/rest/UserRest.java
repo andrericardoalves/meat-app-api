@@ -26,7 +26,7 @@ public class UserRest {
 	public ResponseEntity<Void> save(@RequestBody User user){
 		User obj = service.save(user);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+				.path("/{id}").buildAndExpand(obj.getIdUser()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
@@ -61,9 +61,9 @@ public class UserRest {
 		return ResponseEntity.created(uri).build();
 	}
     
-    @RequestMapping(path="/login",method=RequestMethod.GET)
-    public ResponseEntity<User> login(@RequestParam String email, @RequestParam String password){
-		User obj = service.login(email,password);
+    @RequestMapping(path="/login",method=RequestMethod.POST)
+    public ResponseEntity<User> login(@RequestBody User user){
+		User obj = service.login(user);
 		return ResponseEntity.ok().body(obj);
 	}
 }

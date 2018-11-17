@@ -27,7 +27,7 @@ public class MenuRest {
 	public ResponseEntity<Void> save(@RequestBody MenuItem menu){
 		MenuItem obj = service.save(menu);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+				.path("/{id}").buildAndExpand(obj.getIdMenuItem()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
@@ -51,9 +51,9 @@ public class MenuRest {
 	
 	
 	 @RequestMapping(path="/findByName",  method=RequestMethod.GET)
-		public List<MenuItem> findByName(@RequestParam String name){
-			return service.findByName(name);
-		}
+	 public List<MenuItem> findByName(@RequestParam String name){
+		return service.findByName(name);
+	}
 	
 	 @RequestMapping(path="/saveAll",method=RequestMethod.POST)
 		public ResponseEntity<Void> saveAll(@RequestBody List<MenuItem> menus){
